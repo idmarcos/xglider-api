@@ -1,0 +1,66 @@
+<?php
+
+namespace App\Entity;
+
+use App\Repository\UserRepository;
+use Doctrine\ORM\Mapping as ORM;
+
+#[ORM\Entity(repositoryClass: UserRepository::class)]
+#[ORM\Table(name: '`user`')]
+class User
+{
+    #[ORM\Id]
+    #[ORM\GeneratedValue]
+    #[ORM\Column(type: 'integer')]
+    private $id;
+
+    #[ORM\Column(type: 'string', length: 255)]
+    private $name;
+
+    #[ORM\Column(type: 'string', length: 255)]
+    private $email;
+
+    #[ORM\Column(type: 'datetime_immutable', nullable: true)]
+    private $email_verified_at;
+
+    public function getId(): ?int
+    {
+        return $this->id;
+    }
+
+    public function getName(): ?string
+    {
+        return $this->name;
+    }
+
+    public function setName(string $name): self
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    public function getEmail(): ?string
+    {
+        return $this->email;
+    }
+
+    public function setEmail(string $email): self
+    {
+        $this->email = $email;
+
+        return $this;
+    }
+
+    public function getEmailVerifiedAt(): ?\DateTimeImmutable
+    {
+        return $this->email_verified_at;
+    }
+
+    public function setEmailVerifiedAt(?\DateTimeImmutable $email_verified_at): self
+    {
+        $this->email_verified_at = $email_verified_at;
+
+        return $this;
+    }
+}
