@@ -23,6 +23,9 @@ class User
     #[ORM\Column(type: 'datetime_immutable', nullable: true)]
     private $email_verified_at;
 
+    #[ORM\Column(type: 'string', length: 255)]
+    private $password;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -60,6 +63,18 @@ class User
     public function setEmailVerifiedAt(?\DateTimeImmutable $email_verified_at): self
     {
         $this->email_verified_at = $email_verified_at;
+
+        return $this;
+    }
+
+    public function getPassword(): ?string
+    {
+        return $this->password;
+    }
+
+    public function setPassword(string $password): self
+    {
+        $this->password = $password;
 
         return $this;
     }
